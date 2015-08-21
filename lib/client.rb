@@ -29,4 +29,8 @@ class Client
     @description = attributes.fetch(:description)
     DB.exec("UPDATE clients SET description = '#{@description}' WHERE stylist_id = #{@stylist_id};")
   end
+
+  define_method(:delete) do
+    DB.exec("DELETE FROM clients WHERE stylist_id = #{@stylist_id};")
+  end
 end
