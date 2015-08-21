@@ -25,4 +25,8 @@ class Client
     self.description().==(another_client.description()).&(self.stylist_id().==(another_client.stylist_id()))
   end
 
+  define_method(:update) do |attributes|
+    @description = attributes.fetch(:description)
+    DB.exec("UPDATE clients SET description = '#{@description}' WHERE stylist_id = #{@stylist_id};")
+  end
 end
