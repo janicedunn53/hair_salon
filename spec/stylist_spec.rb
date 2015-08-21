@@ -48,7 +48,7 @@ describe(Stylist) do
     end
   end
 
-  describe("#clients") do
+  describe('#clients') do
     it("returns an array of clients for that stylist") do
       test_stylist = Stylist.new({:name => "Julie", :id => nil})
       test_stylist.save()
@@ -57,6 +57,15 @@ describe(Stylist) do
       test_client2 = Client.new({:description => "Anna_highlights", :stylist_id => test_stylist.id()})
       test_client2.save()
       expect(test_stylist.clients()).to(eq([test_client, test_client2]))
+    end
+  end
+
+  describe('#update') do
+    it("lets you update stylists in the database") do
+      stylist = Stylist.new({:name => "Julie", :id => nil})
+      stylist.save()
+      stylist.update({:name => "Cathy"})
+      expect(stylist.name()).to(eq("Cathy"))
     end
   end
 end
