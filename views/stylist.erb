@@ -13,6 +13,23 @@
     <p>There are no clients for this stylist!</p>
   <% end %>
 
+
+<h3>Add a client to <%= @stylist.name() %> </h3>
+
+<form action="/clients" method="post">
+  <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+
+  <label for="description">Client name and description of service:</label>
+  <input id="description" name="description" type="text">
+
+  <button type="submit">Add client</button>
+</form>
+
+<hr>
+
 <div class="container">
-  <a href="/"><button class="btn">Home</a>
+  <a href="/">Home</a>
+  <a href="/stylists">View All Stylists</a>
+  <a href="/stylists/new">Add New Stylist</a>
+  <a href="/clients/new">Add New Client</a>
 </div>
